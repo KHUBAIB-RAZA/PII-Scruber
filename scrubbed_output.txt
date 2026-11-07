@@ -1,0 +1,316 @@
+---- File: paypal_activity_apr2026.txt ----
+PayPal Activity Export — generated 01 May 2026 03:14 UTC
+Account: <EMAIL_OR_WALLET_ID>
+Account Holder: Bilal Hassan Khan
+Account Type: Personal (Verified)
+Linked Card: Visa x-2070 (expires 09/28)
+Linked Bank: Crescent Bank ****6677
+Registered <PHONE>
+<ADDRESS>
+Login IP (last): 39.<PHONE>
+
+Date, Name / Email, Type, Status, Amount, Fees, Total
+03 Apr 2026, Upwork Escrow Inc (<EMAIL_OR_WALLET_ID>), Payment Received, Completed, +$220.00 USD, -$4.40, +$215.60
+03 Apr 2026, Currency Conversion PKR, Transfer, Completed, +PKR 61050.00, PKR 0.00, +PKR 61050.00
+08 Apr 2026, GitHub Inc, Preapproved Payment, Completed, -$10.00 USD, $0.00, -$10.00
+12 Apr 2026, Payoneer Withdrawal Ref W-88213345, Withdrawal, Pending then Completed, -$150.00 USD, -$2.50, -$152.50
+15 Apr 2026, Fiverr International Ltd, Payment Received, Completed, +$85.00 USD, -$1.70, +$83.30
+15 Apr 2026, Fiverr International Ltd, Payment Received, Completed, +$85.00 USD, -$1.70, +$83.30
+16 Apr 2026, Fiverr International Ltd, Payment Reversal, Completed, -$85.00 USD, +$1.70, -$83.30
+18 Apr 2026, Namecheap Inc order 44120933 domain bilalbuilds.dev, Payment, Completed, -$12.98 USD, $0.00, -$12.98
+22 Apr 2026, TRANSFER TO NATIONAL SAVINGS not related note to self, Note, -, -, -, -
+26 Apr 2026, <EMAIL_OR_WALLET_ID>, Money Sent, Completed, -$40.00 USD, $0.00, -$40.00
+29 Apr 2026, Steam Games (Valve Corp), Payment, Completed, -$4.99 USD, $0.00, -$4.99
+
+Transaction IDs: 8XJ22190T7002841M, 4PL80331B2114902K, 1MC55672H9330217N, 9RT10448V5567823Q
+Customer Support <REFERENCE_ID> (call <PHONE>)
+
+---- File: crescent_bank_statement_apr2026.pdf ----
+---- Page 1 ----
+Crescent Bank Limited
+---- Statement section 1 ----
+Statement of Account — 01-Apr-2026 to 30-Apr-2026
+Branch: Gulshan-e-Iqbal Branch (0114), Karachi
+Customer Name: Bilal Hassan Khan
+<ADDRESS>
+<ACCOUNT_ID>
+IBAN: <IBAN>
+02
+CNIC No <NATIONAL_ID>
+Cell # 0300-1234567
+Email: <EMAIL_OR_WALLET_ID>
+Statement Request <REFERENCE_ID>
+Date
+Description
+Amount
+Balance
+01 Apr 2026
+BAL B/F
+PKR18,450.75
+01 Apr 2026
+SALARY CREDIT TECHVERSE SOLUTIONS PVT LTD REF <CARD_NUMBER>
+PKR185,000.00Cr
+PKR203,450.75
+02 Apr 2026
+RAAST
+ P2P
+ FT
+ -
+ Digital
+ <CARD_NUMBER>
+ FT
+ <CARD_NUMBER>
+<IBAN> <IBAN> BILAL HASSAN
+KHAN Others BILAL HASSAN KHAN 2026-Apr-02 10:14:22, SCBLPKKA,
+CRES<LONG_ID>
+PKR25,000.00Dr
+PKR178,450.75
+02 Apr 2026
+WHT ON CASH/TRANSFER SEC 231AA
+PKR125.00Dr
+PKR178,325.75
+03 Apr 2026
+POS PURCHASE IMTIAZ SUPER MARKET KARACHI PK Card xxxx8821
+PKR7,340.50Dr
+PKR170,985.25
+04 Apr 2026
+NATIONAL FOODS LTD DIVIDEND WARRANT 0044918 CDC REF 77120945
+PKR1,850.00Cr
+PKR172,835.25
+05 Apr 2026
+UTILITY BILL K-ELECTRIC Consumer Number: <CARD_NUMBER>
+PKR9,120.00Dr
+PKR163,715.25
+07 Apr 2026
+RAAST P2P FT - Digital FT CRES-b112 SADA-77c3 BILAL HASSAN KHAN
+Others BILAL HASSAN KHAN 2026-Apr-07 18:40:05, SADAPKKA, VALUE
+DATE:07 Apr 2026
+PKR8,000.00Dr
+PKR155,715.25
+07 Apr 2026
+TRANSFER FEE RAAST INTERBANK
+PKR0.00Dr
+PKR155,715.25
+09 Apr 2026
+IBFT CR MEZ4491 Apr09-12:33:41 P-114488-202600 -MZN GULF FREELANCE
+PORTAL LLC INTERNET PK OTHERS Onelink R2
+PKR62,500.00Cr
+PKR218,215.25
+09 Apr 2026
+CHEQUE NO 0044521 CLEARING FAVOURING AL-REHMAN ESTATE AGENCY
+PKR30,000.00Dr
+PKR188,215.25
+12 Apr 2026
+ATM WDL CRESCENT ATM GULSHAN BR Card xxxx8821 Trace <LONG_ID>
+PKR20,000.00Dr
+PKR168,215.25
+12 Apr 2026
+ATM WDL CRESCENT ATM GULSHAN BR Card xxxx8821 Trace <LONG_ID>
+PKR20,000.00Dr
+PKR168,215.25
+12 Apr 2026
+ATM WDL CHARGES OFF-US
+PKR23.44Dr
+PKR168,191.81
+15 Apr 2026
+ONLINE TRANSFER TO AYESHA SIDDIQUI ACC <CARD_NUMBER>
+HABIBMETRO REF <CARD_NUMBER> POF: FAMILY SUPPORT
+PKR12,000.00Dr
+PKR156,191.81
+18 Apr 2026
+NETFLIX.COM AMSTERDAM NL Card xxxx8821 USD 3.99 @ 278.45 INCL FED
+PKR1,111.02Dr
+PKR155,080.79
+21 Apr 2026
+MOBILE TOPUP <LONG_ID> JAZZ SELF
+PKR500.00Dr
+PKR154,580.79
+22 Apr 2026
+REVERSAL ATM WDL TRACE <LONG_ID> DISPUTE RESOLVED
+PKR20,000.00Cr
+PKR174,580.79
+24 Apr 2026
+RAAST IN FT NAYA-45f8 CRES-b112 BILAL HASSAN KHAN Others 2026-Apr-24
+12:30:11, NAYAPKKA
+PKR15,000.00Cr
+PKR189,580.79
+25 Apr 2026
+RAAST P2P FT - Digital FT CRES-b112 NAYA-45f8 BILAL HASSAN KHAN Others
+BILAL HASSAN KHAN 2026-Apr-25 21:02:44, NAYAPKKA, VALUE DATE:25 Apr
+2026
+PKR10,000.00Dr
+PKR179,580.79
+28 Apr 2026
+FONEPAY QR PAYMENT CHAI WALA CLIFTON KARACHI
+PKR860.00Dr
+PKR178,720.79
+29 Apr 2026
+SMS BANKING CHARGES APR-26
+PKR180.00Dr
+PKR178,540.79
+30 Apr 2026
+WHT SEC 236P NON-FILER ADJ REVERSED FILER STATUS CONFIRMED
+CNIC <NATIONAL_ID>
+PKR0.00Dr
+PKR178,540.79
+30 Apr 2026
+PROFIT PAYMENT SAVINGS APR-26
+PKR412.88Cr
+PKR178,953.67
+
+---- Detected table 1 ----
+ |  |  | 
+ |  |  | 
+ |  |  | 
+ |  |  | 
+ |  |  | 
+ |  |  | 
+ |  |  | 
+
+---- File: international_bank_statements_apr2026.docx ----
+Barrow Bank plc (United Kingdom)
+---- Statement section 1 ----
+Barrow Bank plc — Current Account Statement — April 2026
+Account Holder: Daniel R. Whitfield<ADDRESS>
+<SORT_CODE> (402219)   <ACCOUNT_ID>
+IBAN: <IBAN>
+<BANK_CODE>
+NI Number: <NATIONAL_ID>
+<PHONE> / 07700 900123
+Email: <EMAIL_OR_WALLET_ID>
+01 Apr 2026 | SALARY NORTHERN GRID LTD REF NG-PAY-0401 | +£2,450.00 | £3,120.44
+03 Apr 2026 | TESCO STORES 3421 MANCHESTER GBR | -£54.20 | £3,066.24
+05 Apr 2026 | DIRECT DEBIT THAMES ENERGY REF DD-99231144 | -£89.00 | £2,977.24
+08 Apr 2026 | FASTER PAYMENT TO SARAH WHITFIELD <SORT_CODE> ACC 99887766 REF RENT SHARE | -£300.00 | £2,677.24
+11 Apr 2026 | SPOTIFY UK LONDON GBR | -£11.99 | £2,665.25
+14 Apr 2026 | AMAZON.CO.UK MKTPLACE | -£37.85 | £2,627.40
+19 Apr 2026 | CASH WITHDRAWAL LINK ATM PICCADILLY Card ending 4532 | -£100.00 | £2,527.40
+24 Apr 2026 | COUNCIL TAX MANCHESTER CC REF <LONG_ID> | -£142.00 | £2,385.40
+28 Apr 2026 | TRANSFER OVERSEAS REMITLY TO PK BENEFICIARY BILAL HASSAN KHAN IBAN <IBAN> | -£120.00 | £2,265.40
+Harborstone National Bank (USA)
+Harborstone National Bank — Checking Account — April 2026
+Account Holder: Marcus T. Alvarez<ADDRESS>
+<ROUTING_ID>   <ACCOUNT_ID>
+SSN on file: <NATIONAL_ID>
+<PHONE>
+Email: <EMAIL_OR_WALLET_ID>
+04/01/2026 | PAYROLL DEPOSIT LONESTAR ANALYTICS LLC ACH TRACE <CARD_NUMBER> | +$3,850.00 | $5,214.33
+04/03/2026 | STARBUCKS #08841 AUSTIN TX | -$7.25 | $5,207.08
+04/05/2026 | ZELLE PAYMENT TO JENNA ALVAREZ REF Z-77120945 | -$250.00 | $4,957.08
+04/08/2026 | WHOLE FOODS MKT #10233 AUSTIN TX Card xxxx5590 | -$132.60 | $4,824.48
+04/12/2026 | ACH DEBIT AUSTIN ENERGY UTILITY ACCT <LONG_ID> | -$95.40 | $4,729.08
+04/15/2026 | VENMO PAYMENT TO @carlos-r-tx | -$60.00 | $4,669.08
+04/18/2026 | GITHUB, INC. SAN FRANCISCO CA | -$10.00 | $4,659.08
+04/22/2026 | CHECK #1102 IMAGE REF <CARD_NUMBER> | -$400.00 | $4,259.08
+04/29/2026 | INTEREST PAYMENT | +$1.12 | $4,260.20
+Mapleleaf Credit Union (Canada)
+Mapleleaf Credit Union — Chequing Account — April 2026
+Account Holder: Priya Raghunathan<ADDRESS>
+Transit: 30800  Institution: 828  <ACCOUNT_ID>
+<NATIONAL_ID>
+<PHONE>
+Email: <EMAIL_OR_WALLET_ID>
+01 Apr 2026 | PAYROLL DEPOSIT NORTHBRIDGE HEALTH INC | +C$3,120.00 | C$4,880.19
+02 Apr 2026 | INTERAC e-Transfer TO ROHAN RAGHUNATHAN <EMAIL_OR_WALLET_ID> REF CAxK2mQ8 | -C$500.00 | C$4,380.19
+06 Apr 2026 | TIM HORTONS #4471 TORONTO ON | -C$6.40 | C$4,373.79
+09 Apr 2026 | PRESTO FARE TORONTO | -C$43.75 | C$4,330.04
+13 Apr 2026 | LOBLAWS #0762 TORONTO ON Card xxxx3308 | -C$118.92 | C$4,211.12
+17 Apr 2026 | HYDRO ONE BILL PAYMENT ACCT <LONG_ID> | -C$88.10 | C$4,123.02
+21 Apr 2026 | NETFLIX.COM | -C$18.99 | C$4,104.03
+26 Apr 2026 | INTERAC e-Transfer FROM ANANYA IYER REF CAxT9pL2 | +C$220.00 | C$4,324.03
+Rheinbank AG (Germany)
+Rheinbank AG — Kontoauszug April 2026
+Kontoinhaber: Lukas Brandt
+Anschrift: Bergmannstraße 44, 10961 Berlin, Deutschland
+IBAN: <IBAN>
+<BANK_CODE>
+Kontonummer: <LONG_ID>   BLZ: 37040044
+Steuer-ID: <PHONE> 903
+Handynummer: +<CARD_NUMBER>
+E-Mail: <EMAIL_OR_WALLET_ID>
+01.04.2026 | GEHALT BERLINER DATENWERK GMBH | +€3.200,00 | €4.150,20
+04.04.2026 | REWE MARKT BERLIN DEU | -€64,35 | €4.085,85
+07.04.2026 | SEPA-UEBERWEISUNG AN KLAUS MUELLER IBAN <IBAN> VERWENDUNG MIETE APRIL | -€950,00 | €3.135,85
+12.04.2026 | Netflix.com AMSTERDAM NLD | -€15,99 | €3.119,86
+16.04.2026 | AMAZON.DE MKTPLACE | -€41,20 | €3.078,66
+20.04.2026 | SEPA-LASTSCHRIFT VODAFONE GMBH MANDATSREF VF-99887766 GLAEUBIGER-ID <IBAN> | -€39,99 | €3.038,67
+23.04.2026 | BVG TICKET BERLIN | -€49,00 | €2.989,67
+Shree Vardhaman Bank (India)
+---- Statement section 2 ----
+Shree Vardhaman Bank — Savings Account Statement — April 2026
+Account Holder: Rahul Deshpande<ADDRESS>
+<ACCOUNT_ID>
+IFSC: <IFSC>   MICR: <LONG_ID>
+PAN: ABCPD1234F
+Aadhaar: <PHONE>
+UPI ID: <PAYMENT_HANDLE>
+<PHONE>
+Email: <EMAIL_OR_WALLET_ID>
+01-Apr-2026 | NEFT CR INFOTECH LABS PVT LTD SALARY UTR N<CARD_NUMBER> | +₹85,000.00 | ₹1,12,340.00
+03-Apr-2026 | UPI/P2M/<LONG_ID>/ZOMATO ONLINE ORDER | -₹420.00 | ₹1,11,920.00
+06-Apr-2026 | UPI/P2P/<LONG_ID>/PRIYA SHARMA/<PAYMENT_HANDLE> | -₹2,000.00 | ₹1,09,920.00
+10-Apr-2026 | ATM WDL PUNE CAMP BR Card xxxx7714 | -₹10,000.00 | ₹99,920.00
+14-Apr-2026 | BILLPAY MSEB ELECTRICITY CONSUMER <LONG_ID> | -₹1,860.00 | ₹98,060.00
+19-Apr-2026 | UPI/P2M/<LONG_ID>/SWIGGY INSTAMART | -₹1,240.00 | ₹96,820.00
+23-Apr-2026 | IMPS/P2A/<LONG_ID>/TO RAHUL DESHPANDE/<IFSC>/XXXXXX4321 SELF | -₹15,000.00 | ₹81,820.00
+27-Apr-2026 | CREDIT INTEREST | +₹312.00 | ₹82,132.00
+
+---- File: wallet_transactions.csv ----
+Customer Name | Bilal Hassan Khan |  |  | 
+Wallet ID | bilalhk91 |  |  | 
+Wallet Account Number | <LONG_ID> |  |  | 
+IBAN | <IBAN> |  |  | 
+Registered CNIC | <NATIONAL_ID> |  |  | 
+Registered Email | <EMAIL_OR_WALLET_ID> |  |  | 
+Linked Card | 521234******2070 |  |  | 
+---- Statement section 1 ----
+Statement Period | 01 Apr 2026 to 30 Apr 2026 |  |  | 
+Opening Balance | 8,450.50 | Closing Balance | 21,294.29 | 
+Total Spent | 105,456.21 | Total Received | 118,300.00 | 
+ |  |  |  | 
+TIMESTAMP | TYPE | DESCRIPTION | AMOUNT | BALANCE
+2026-04-01 08:55:12 | Merchant Payment | Paid to Foodpanda Karachi PK|Visa xxxx2070 | -1240.50 | 7210.00
+2026-04-01 18:22:47 | Mobile Top-Up | Mobile top-up purchased |Ufone 0333-1234567 Nickname: my ufone | -500.00 | 6710.00
+2026-04-02 10:14:03 | Raast In | Incoming fund transfer from Bilal Hassan Khan, Crescent Bank IBAN <IBAN>|<REFERENCE_ID> | +25,000.00 | 31,710.00
+2026-04-02 13:40:29 | Merchant Payment | Paid to Foodpanda Karachi PK|Visa xxxx2070 | -985.75 | 30724.25
+2026-04-03 19:22:51 | Peer to Peer | Money sent to Hamza Qureshi|(<PAYMENT_HANDLE>) NayaPay xxxx445 | -5000.00 | 25724.25
+2026-04-04 09:12:36 | Online | Paid to Careem Rides Karachi PK|Visa xxxx2070 | -435.00 | 25289.25
+2026-04-04 21:48:10 | Merchant Payment | Paid to Foodpanda Karachi PK|Visa xxxx2070 | -1512.30 | 23776.95
+2026-04-05 16:40:44 | Bill Payment (1LINK) | Paid to StormFiber|Consumer Number: <CARD_NUMBER> Consumer Name: Bilal Khan Alias: Internet Bill | -4200.00 | 19576.95
+2026-04-06 12:05:18 | POS | Paid to IMTIAZ SUPER MARKET, GULSHAN BRANCH KARACHI PK|Visa xxxx2070 | -6320.40 | 13256.55
+2026-04-07 18:41:09 | Raast Out | Outgoing fund transfer to Bilal Hassan Khan SadaPay-7703|Nickname: my sadapay <REFERENCE_ID> | -8000.00 | 5256.55
+2026-04-08 20:31:55 | Merchant Payment | Paid to Foodpanda Karachi PK|Visa xxxx2070 | -742.99 | 4513.56
+2026-04-09 12:35:27 | Raast In | Incoming fund transfer from Gulf Freelance Portal LLC MCB-9911|Invoice GFP-2026-0412, <REFERENCE_ID> | +62,500.00 | 67,013.56
+2026-04-09 13:02:41 | Raast Out | Outgoing fund transfer to Ammi Jaan easypaisa Bank-8834|Nickname: Ammi kharcha <REFERENCE_ID> | -15,000.00 | 52,013.56
+2026-04-10 20:12:33 | Online | Paid to Careem Rides Karachi PK|Visa xxxx2070 | -850.00 | 51163.56
+2026-04-11 21:30:02 | Peer to Peer | Money received from Ayesha Siddiqui|(<PAYMENT_HANDLE>) NayaPay xxxx998 | +3000.00 | 54163.56
+2026-04-12 12:01:14 | Cash Withdrawal | Cash Withdrawn at ATM|Visa xxxx2070 Trace <LONG_ID> | -20,000.00 | 34,163.56
+2026-04-12 14:44:58 | POS | Paid to CHASE UP SHOPPING KARACHI PK|Visa xxxx2070 | -2890.00 | 31273.56
+2026-04-13 09:02:11 | Service | SIM reissue verification|CNIC <NATIONAL_ID> submitted at Ufone franchise Gulshan | 0.00 | 31273.56
+2026-04-13 23:11:37 | Merchant Payment | Paid to Foodpanda Karachi PK|Visa xxxx2070 | -1105.50 | 30168.06
+2026-04-14 22:18:26 | Merchant Payment | Paid to Foodpanda Karachi PK|Visa xxxx2070 | -980.25 | 29187.81
+2026-04-14 22:18:26 | Merchant Payment | Paid to Foodpanda Karachi PK|Visa xxxx2070 | -980.25 | 29187.81
+2026-04-15 10:20:05 | Refund | Refund from Foodpanda Karachi PK|Visa xxxx2070 confirmation sent to <EMAIL_OR_WALLET_ID> | +980.25 | 30168.06
+2026-04-15 19:35:48 | Mobile Top-Up | Mobile top-up purchased |Zong (0315) 1234567 Nickname: office sim | -300.00 | 29868.06
+2026-04-16 21:27:12 | Bill Payment (1LINK) | Paid to K-Electric|Consumer Number: <CARD_NUMBER> Consumer Name: Bilal Khan Alias: ELECTRICITY â_x009a_¡ | -9120.00 | 20748.06
+2026-04-16 21:31:39 | Bill Payment (1LINK) | Paid to Karachi Water & Sewerage Corporation|Consumer Number: Consumer Name: Owner Alias: Pani | -1450.00 | 19298.06
+2026-04-17 13:26:44 | Merchant Payment | Paid to KFC Gulshan Karachi PK|Visa xxxx2070 | -1890.00 | 17408.06
+2026-04-18 15:44:21 | Online | Paid to Daraz.pk Karachi PK|Visa xxxx2070 Order <CARD_NUMBER> | -3499.00 | 13909.06
+2026-04-19 11:08:53 | Peer to Peer | Money received from Hamza Qureshi|(<PAYMENT_HANDLE>) NayaPay xxxx445 | +2500.00 | 16409.06
+2026-04-20 10:09:32 | Raast Out | Outgoing fund transfer to Muhammad Irfan easypaisa Bank-5521|Nickname: Irfan bhai plumber 0345 9876543 <REFERENCE_ID> | -2500.00 | 13909.06
+2026-04-20 22:47:15 | Merchant Payment | Paid to HAMZA GENERAL STORE KARACHI PK|Visa xxxx2070 | -664.80 | 13244.26
+2026-04-21 09:15:40 | Online | Paid to Careem Rides Karachi PK|Visa xxxx2070 | -390.00 | 12854.26
+2026-04-22 17:54:07 | Subscription | Paid to Spotify AB, Stockholm SE|Visa xxxx2070 | -499.00 | 12355.26
+2026-04-23 20:02:59 | POS | PAID TO SHANDAR SHINWARI RESTAURANT NATIONAL HIGHWAY KARACHI PK|Visa xxxx2070 | -3150.00 | 9205.26
+2026-04-24 12:30:11 | Raast In | Incoming fund transfer from Bilal Hassan Khan Crescent-6702|<REFERENCE_ID> | +15,000.00 | 24,205.26
+2026-04-24 12:33:57 | Cash Withdrawal | Cash Withdrawn at ATM|Visa xxxx2070 Trace <LONG_ID> | -10,000.00 | 14,205.26
+2026-04-25 21:03:16 | Raast Out | Outgoing fund transfer to Bilal Hassan Khan Crescent-6702|Nickname: main bank <REFERENCE_ID> | -5000.00 | 9205.26
+2026-04-26 14:19:02 | Merchant Payment | Paid to Foodpanda Karachi PK|Visa xxxx2070 | -873.45 | 8331.81
+2026-04-27 00:00:03 | Peer to Peer | Money sent to Hamza Qureshi|(<PAYMENT_HANDLE>) NayaPay xxxx445 | -1500.00 | 6831.81
+2026-04-28 16:45:23 | Raast In | Incoming fund transfer from Bilal Hassan Khan SadaPay-7703|<REFERENCE_ID> | +10,300.00 | 17,131.81
+2026-04-29 19:21:34 | Reversal | Transaction reversal ATM decline Trace <LONG_ID>|Visa xxxx2070 | +2000.00 | 19131.81
+2026-04-29 23:55:50 | Merchant Payment | Paid to Netflix.com Amsterdam NLD|Visa xxxx2070 | -1100.00 | 18031.81
+2026-04-30 18:37:29 | Mobile Top-Up | Mobile top-up purchased |Ufone 0333-1234567 Nickname: my ufone | -500.00 | 17531.81
+2026-04-30 21:12:08 | Merchant Payment | Paid to Foodpanda Karachi PK|Visa xxxx2070 | -898.90 | 16632.91
+2026-04-30 22:40:19 | Raast In | Incoming fund transfer from Osman Tariq Meezan-3312|Nickname: cricket fund wapsi <REFERENCE_ID> | +6000.00 | 22632.91
+2026-04-30 23:59:58 | Fee | Monthly service charges incl. FED|Ref FEE-APR26-9981 | -1338.62 | 21294.29

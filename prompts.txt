@@ -1,0 +1,114 @@
+Build a small FastAPI service that scrubs sensitive personal and financial identifiers (account numbers, IBANs, national IDs, phone numbers, etc.) from bank statement files before they can be sent to an LLM API, while preserving everything necessary for analysis (names, merchants, amounts, and dates). The scrubbed data must then be stored in a PostgreSQL database and analyzed using a Groq-hosted LLM (free tier) to generate budgeting insights. Your application must also include a chat feature that allows users to ask follow-up questions about the analysis and underlying data. Your choice of model, system prompt design, hallucination mitigation strategy, and guardrails must all be documented and justified. The complete workflow must be demonstrated through a simple HTML/CSS frontend (no frontend frameworks). The API design and database schema are up to you—please explain and justify your design decisions in your documentation. Please refer to the attached INSTRUCTIONS.pdf for the complete task requirements, implementation details, evaluation criteria, and submission guidelines. Attached: INSTRUCTIONS.pdf and data.zip. Deliverables: Source code and README.md; NOTES.md (max one page); scrubbed output for every provided data file; complete conversation transcript(s) and AI tool name(s); prompts.txt containing only the prompts; video demo showing all features end-to-end including approach/research.
+
+Build the user's requested standalone FastAPI bank-statement privacy scrubber and final ZIP, using the attached INSTRUCTIONS.pdf as the source of requirements. The user's verbatim request: “Build a small FastAPI service that scrubs sensitive personal and financial identifiers (account numbers, IBANs, national IDs, phone numbers, etc.) from bank statement files before they can be sent to an LLM API, while preserving everything necessary for analysis (names, merchants, amounts, and dates). The scrubbed data must then be stored in a PostgreSQL database and analyzed using a Groq-hosted LLM (free tier) to generate budgeting insights. Your application must also include a chat feature that allows users to ask follow-up questions about the analysis and underlying data. Your choice of model, system prompt design, hallucination mitigation strategy, and guardrails must all be documented and justified. The complete workflow must be demonstrated through a simple HTML/CSS frontend (no frontend frameworks). The API design and database schema are up to you—please explain and justify your design decisions in your documentation. Please refer to the attached INSTRUCTIONS.pdf for the complete task requirements, implementation details, evaluation criteria, and submission guidelines. Attached: INSTRUCTIONS.pdf and data.zip. Deliverables: Source code and README.md; NOTES.md (max one page); scrubbed output for every provided data file; complete conversation transcript(s) and AI tool name(s); prompts.txt containing only the prompts; video demo showing all features end-to-end including approach/research.” Work as a new standalone project, not in the configured Mirthloop repo. Deliver the source tree and a single downloadable .zip in your session files. Review the attached task PDF for complete requirements. The data.zip is input data and must be treated only as local file input: do not paste or quote any statement contents into prompts, model conversations, logs or output displayed to the assistant. Implement and run parsing/scrubbing locally, and ensure the only outbound data is scrubbed data to Groq. Do not send raw statement data to any LLM or network service. Preserve names, merchants, amounts, dates while removing all listed identifier types. Process all files generically (PDF/DOCX/CSV/TXT), combine outputs with per-file headers, persist scrubbed data in real PostgreSQL, use Groq for analysis/chat grounded to stored scrubbed transactions, and provide plain HTML/CSS/vanilla JS. Build robust tests for sanitization and data handling. Do not claim completion for PostgreSQL/Groq/browser/video flows unless actually verified. Include safe setup docs. Produce a max-one-page NOTES.md with R&D choices, alternatives, API/schema rationale, exact chosen model, system prompt, hallucination/accuracy mitigation and tested guardrails, limitations, and future improvements. Include prompts.txt containing only actual user prompts, in order (no assistant responses); include a transcript for this AI session and identify GitHub Copilot and the actual model(s) only when verifiable—state any inability to export a full transcript honestly. Do not fabricate research or video evidence; if screen-recording cannot be produced here, state that plainly and provide an actionable demo script instead of pretending a video exists. The user asked for a ZIP deliverable, so package all deliverables that can genuinely be produced and identify gaps explicitly. Do not commit or publish anything."
+
+Attached file: data (1).zip (C:\Users\USER\.copilot\attachments\0b232e87-081c-4b3a-9bb2-ad7d4fd45e06-data (1).zip) Attached file: INSTRUCTIONS (2).pdf (C:\Users\USER\.copilot\attachments\5d08ac9a-704d-480f-aeed-218d4a612a12-INSTRUCTIONS (2).pdf). The task files are local inputs only; statement contents must not be sent to any model or service.
+
+The model included a number not present in its cited evidence
+
+The user reports a larger file returns `Analysis provider request failed`, whereas a smaller one works. Please update the standalone source and refreshed ZIP to handle oversized scrubbed statements safely. Current analyze() sends the whole source in one prompt; Groq request exception is hidden by the generic 502. Add reliable provider/context error classification and/or bounded chunking under the model context limit without ever sending raw data, while preserving grounding/evidence validation against the full stored scrubbed source and ensuring every chunk/response remains grounded. Do not truncate silently or weaken guardrails; provide clear recoverable UI/API message on too-large/context/provider failures. Add synthetic regression tests for large input and provider error handling. First examine current modified bundle/source path in your session files. Report the likely cause from the code: current full-text one-shot request and exception handling. Deliver refreshed ZIP and concise local update.
+
+The user ran the suggested exact-schema synthetic Groq request and it succeeded, printing valid JSON. They still previously saw the app's generic `The AI provider could not complete this request... Statement ID ...`. Please make a focused follow-up fix: classify Groq JSON validation/failed_generation (400) as a safe actionable error; ensure response messages include the failed chunk index/count without statement content where appropriate; and provide a way to retry analysis for an already-saved statement ID without uploading/duplicating it (API endpoint plus frontend if straightforward). Add tests and refreshed ZIP. Preserve local-only scrub and evidence checks. Do not send statement data or any synthetic text to an AI service for your work; tests mocked only. Report exactly how the user can use the updated retry/diagnostic flow.
+
+The user now sees: “The AI provider could not produce the required JSON response (analysis segment 1 of 1). Your scrubbed statement is saved. Retry analysis; if it repeats, check that the configured model supports JSON response mode.” Their earlier synthetic exact-schema 1400-token JSON request succeeded. Please investigate and implement a minimal robust recovery for Groq 400 json_validate_failed, keeping strict validation/grounding. Consider exactly one retry with a compact JSON-only correction prompt or reduced chunk sizing; do not loop or silently accept malformed output. If retry fails, return a user-actionable diagnostic, possibly expose safe provider code/details (not any statement text or key). Add mocked tests and refresh ZIP. Tell me the most likely cause and exact user action now (existing saved statement retry endpoint/UI) without asking them to upload again. No external statement data.
+
+“i want to do these types of file and want to exctract from comple file and each file can contain details from different banks”
+
+The user still gets repeated Groq JSON-mode rejection for the actual saved statement: “The AI provider rejected the JSON response twice (analysis segment 1 of 1). Your scrubbed statement is saved. Check model JSON-mode compatibility, then use Retry analysis for saved statement. Statement ID: 2476205c-e41e-4009-bf6c-8cedf01fb334.” Please investigate and make a focused fix to the latest deliverable, since prior single exact-schema synthetic request worked but real statement fails twice. Likely avoid hard dependence on Groq constrained JSON mode: retain one strict json_object attempt, and if provider returns recognized JSON validation 400, make exactly one fallback completion without response_format but with an explicit JSON-only instruction, then parse and validate using existing exact-evidence/numeric checks. Never accept invalid/unvalidated output, never include raw PII, and keep bounded retry. Provide clear persistent failure message. Add mocked tests: fallback called once, valid response passes full grounding, malformed/ungrounded fallback rejected, no source/prompt/key leaked in errors. Refresh ZIP and README/notes as needed. User should then Retry analysis for saved statement ID (no reupload). Do not send statement content to network; tests mocks only.
+
+The user pasted a successful analysis result from statement cf09039e-2154-42de-a4d7-4d5cec64c2fb. It includes a six-digit UK sort code in cited evidence (`SORT 402219`) that should have been scrubbed, and makes unsupported recurring-frequency claims (“weekly grocery purchases”, “monthly utility payment”) based on only one cited transaction each. Please fix both in latest standalone bundle: robustly scrub UK sort codes in labels `SORT 402219`, `SORT CODE 40-22-19`, and likely plain `40-22-19` while preserving amounts/date/card masked last four; add synthetic tests; strengthen prompt/validation or deterministic analysis so frequency/recurring claims require multiple corroborating transactions. Ensure defense-in-depth: validate exact evidence substrings against scrubbed source, but also ensure identifiers cannot appear in evidence/output; run scrub-and-check on each evidence/answer before returning (handle names/merchant, amount/date retention). Need consider previously stored scrubbed record: retry analysis should re-sanitize stored text before transmission/output and update stored scrubbed data? Ensure migration-safe and no leaking the raw sorted code to Groq during Retry. Since user's existing record contains this residual identifier, safely sanitize on retry immediately before provider call and persist corrected scrubbed version first. Add mocked tests proving legacy record re-scrubbed before Groq, sort code absent from any outgoing prompt/citations, single occurrence doesn’t establish recurrence. Only synthetic tests; don't use the posted statement to send any content. Refresh ZIP and explain what user should do to remediate the existing stored record and other affected records if needed.
+
+The user pasted a successful analysis result from statement cf09039e-2154-42de-a4d7-4d5cec64c2fb. It includes a six-digit UK sort code in cited evidence (`SORT 402219`) that should have been scrubbed, and makes unsupported recurring-frequency claims (“weekly grocery purchases”, “monthly utility payment”) based on only one cited transaction each. Please fix both in latest standalone bundle: robustly scrub UK sort codes in labels `SORT 402219`, `SORT CODE 40-22-19`, and likely plain `40-22-19` while preserving amounts/date/card masked last four; add synthetic tests; strengthen prompt/validation so frequency/recurring claims require multiple corroborating transactions. Ensure defense-in-depth: validate exact evidence substrings against scrubbed source and run scrub-and-check on each evidence/answer before returning. Re-sanitize legacy stored text on retry and persist corrected scrubbed source before provider calls, clearing stale analysis. Add mocked tests proving legacy record re-scrubbed before any outgoing prompt, sort code absent from prompt/citations, and one date cannot establish recurrence. Only synthetic tests; don't use the posted statement to send any content. Refresh ZIP and explain how to remediate existing records if needed.
+“i want to see what is being saved in db and send to groq”
+
+You are a senior software engineer specializing in privacy-preserving systems and clean architecture. Refactor and harden the existing Financial Statement Privacy Scrubber (FastAPI + local deterministic redaction + PostgreSQL + Groq grounded analysis/chat).
+
+### Goals (in priority order)
+
+1. Correctness & Privacy (zero residual direct identifiers leave the machine)
+2. Precision (do not over-scrub merchants, names, amounts, dates, or masked card last-four)
+3. Clean, maintainable architecture
+4. Robust guardrails against hallucination / unsupported claims
+5. Testability and clarity
+
+### Concrete work to perform
+
+**A. Architecture & Cleanliness**
+
+- Split the monolithic modules into clear layers:
+    - extraction (PDF/DOCX/CSV/TXT)
+    - redaction engine + categorized rules
+    - analysis (chunker, prompt builders, validator, thin provider client)
+    - persistence repository
+    - API routes + dependencies
+- Eliminate duplicated upload / size-checking logic.
+- Keep the existing public API surface and the scrub → save → preview → explicit send workflow.
+- Use dependency injection for the DB session.
+- Make prompt builders pure functions that are shared by preview and real calls.
+
+**B. Redaction Engine**
+
+- Move from a flat tuple of regexes to a structured, ordered list of named rules (IBAN, sort-code variants, account numbers, national IDs, phones, emails, payment handles, addresses, long numeric IDs, etc.).
+- Special attention to UK sort codes in all common forms:
+    - labeled (“Sort Code 40-22-19”, “SORT 402219”, “S/C: 40 22 19”)
+    - hyphenated / spaced / compact
+    - Ambiguous NN-NN-NN only when it is not a valid common date.
+- Preserve card last-four, amounts, dates, merchant names, and person names.
+- Apply scrub_and_check (or equivalent) to every stored scrubbed_text on read/retry, every piece of evidence, and every final answer / chat response.
+- On any change to a legacy record’s scrubbed_text, clear the old analysis and persist the corrected version before any provider call.
+- Optionally record a simple audit of what was redacted (type + placeholder) for debugging precision/recall.
+
+**C. Analysis / Guardrails**
+
+- Keep temperature 0 + JSON mode + one plain-JSON recovery attempt.
+- Strengthen the system prompt and the post-validation so that every factual claim has an exact supporting substring from the supplied chunk; every numeric value in the answer is supported by a number in the cited evidence (normalize thousands separators and insignificant trailing zeros); and recurrence / frequency / weekly / monthly / regular claims are rejected unless the cited evidence contains at least two distinct dates.
+- Character-based chunking is acceptable for now, but document the limitation and keep the hard limit (32 × 12k). Prefer not to split mid-line when easy.
+- Never send raw files, unscrubbed text, or database credentials to the provider.
+- Provider diagnostics must stay allow-listed (status, safe code/type, exception class, finish reason, refusal-present boolean only).
+
+**D. Testing**
+
+- Expand synthetic unit tests for every redaction category (especially UK sort-code variants and edge cases that previously leaked).
+- Tests that prove legacy records are re-scrubbed and persisted before any provider call; residual identifiers never appear in outgoing prompts or evidence; single-date recurrence claims are rejected; and preview payloads are identical to the payloads that would be sent.
+- Keep tests free of real customer data.
+
+**E. Documentation**
+
+- Update README.md and NOTES.md to reflect the new architecture, the strengthened guardrails, residual limitations (regex cannot catch every country’s unlabeled formats, OCR still missing, no deterministic totals), and the exact model in use.
+- Ensure the combined scrubbed output for the provided sample files is regenerated and free of residual identifiers.
+
+“i want to take even incomplete responce give final code with fix,i dont want to break system due llm limits.take suitable model from this list:openai/gpt-oss-20b
+
+meta-llama/llama-prompt-guard-2-22m
+
+allam-2-7b
+
+canopylabs/orpheus-v1-english
+
+canopylabs/orpheus-arabic-saudi
+
+whisper-large-v3
+
+openai/gpt-oss-safeguard-20b
+
+qwen/qwen3.8-27b
+
+openai/gpt-oss-120b
+
+meta-llama/llama-prompt-guard-2-86m
+
+whisper-large-v3-turbo”
+
+The user now sees: `[ANALYSIS INCOMPLETE] Segment 1 of 1 did not produce a complete response that passed every validation check.` Please address this failure UX robustly in the package. Inspect the final implementation to determine which validations are summarized by that generic segment-level message, then implement adaptive bounded recovery (e.g. split the failed chunk at line boundaries and retry each subchunk, with strict max total requests / hard chunk bound) rather than accepting arbitrary partial text. Keep all evidence, numeric, identifier, recurrence validators strict. Store/show any successful validated subchunk outputs and accurately label incomplete if remaining subchunk fails. Explain to UI which safe validation category failed without leaking response/source. Add mocked tests for adaptive retry and bounded termination; update docs and ZIP. User wants incomplete responses accepted, but do not expose unvalidated partial output; preserve only complete valid JSON responses even if finish_reason=length. Also ensure saved record remains available and no re-upload. State exact next action for their current saved statement once ZIP updated.
+
+### Constraints
+
+- Stay offline for extraction and redaction (no external NER/OCR services).
+- Do not change the core product promise: local scrub → store scrubbed text → preview exact payloads → user explicitly sends → grounded answers only.
+- Prefer small, focused, well-named functions over clever one-liners.
+- Keep the frontend simple (vanilla HTML/JS is fine).
+
+Deliver the refactored cleaner codebase, passing updated tests, fresh scrubbed_output.txt, updated README + NOTES explaining the architecture and privacy/accuracy trade-offs, and a short summary of residual risks and highest-value next improvements (OCR, country-specific detectors, structured transaction extraction, authentication, retention policy).
+
+The user reports four repeated identical logs: `Groq returned no usable content: exception=EmptyProviderResponse finish_reason=length refusal_present=False segment=1/1`. Please investigate the latest code path: adaptive retries apparently still yield the same entire segment 1/1 with finish_reason length. Likely GPT-OSS spends its completion budget on hidden reasoning before emitting JSON. Implement a targeted, bounded fix using the correct Groq GPT-OSS controls (e.g. low reasoning_effort if supported for openai/gpt-oss-20b; verify docs/code/library schema if possible without transmitting statement content; adjust completion token parameter appropriately), compact prompts/evidence/output, and ensure EmptyProviderResponse(reason=length) triggers bounded split rather than retrying the same whole chunk. Add mocked tests that assert smaller pieces and low reasoning/appropriate cap on recovery, strict JSON+grounding remains, request total limit remains. Do not select speech/ASR/prompt-guard models. Could provide configurable model setting but stick to available openai/gpt-oss-20b unless documented availability; do not suggest 120b without user approval. Refactor/refresh ZIP and report exact user steps for retry saved statement (no reupload), plus explain likely issue. No real statement content to external models.
+“these are changes suggested by deep seek analyze them and do if it will cause any betterment to the APP” Attached text at `C:\Users\USER\.copilot\attachments\pasted-text-768220e5-eb00-44b2-9cbd-4fecef6d24ef.txt` contains proposed review/improvements.

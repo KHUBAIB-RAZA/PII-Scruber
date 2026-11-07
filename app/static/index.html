@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Statement Privacy Scrubber</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">LOCAL-FIRST PERSONAL FINANCE</p>
+      <h1>Statement privacy scrubber</h1>
+      <p>Inspect exactly what is saved and what would be sent to Groq. Nothing is sent for analysis until you choose Analyze.</p>
+    </header>
+    <section class="panel">
+      <h2>1. Upload statements</h2>
+      <form id="upload-form">
+        <label for="files">PDF, DOCX, CSV, or TXT files</label>
+        <input id="files" name="files" type="file" accept=".pdf,.docx,.csv,.txt" multiple required>
+        <button id="submit" type="submit">Scrub, save & preview only</button>
+      </form>
+      <p class="notice">Files are parsed and scrubbed locally by this app before PostgreSQL storage. Preview does not contact Groq. The displayed prompts include scrubbed statement text and go to Groq only after you click Analyze.</p>
+      <form id="load-form">
+        <label for="statement-id">Or inspect an already-saved statement ID</label>
+        <input id="statement-id" type="text" placeholder="Statement UUID" autocomplete="off">
+        <button type="submit">Load saved preview</button>
+      </form>
+      <p id="status" role="status"></p>
+    </section>
+    <section id="results" class="panel hidden">
+      <h2>2. Saved scrubbed statement</h2>
+      <p id="statement-meta"></p>
+      <pre id="scrubbed"></pre>
+      <h2>3. Exact planned Groq payloads</h2>
+      <p class="notice">Each segment shows the model settings and messages used for the initial JSON-mode request plus the one-time plain-JSON recovery payload. These are previews only; no request is made by loading this panel.</p>
+      <p id="request-estimate" class="notice"></p>
+      <div id="provider-payloads"></div>
+      <button id="retry-analysis" type="button">Analyze this saved statement with Groq</button>
+      <h2>4. Budgeting analysis</h2>
+      <p id="analysis-coverage" class="coverage hidden" role="status"></p>
+      <div id="analysis" class="analysis"></div>
+      <h2>5. Ask a follow-up</h2>
+      <div id="chat-log" aria-live="polite"></div>
+      <form id="chat-form">
+        <label for="question">Question about this statement</label>
+        <textarea id="question" maxlength="2000" rows="3" required></textarea>
+        <button type="submit">Preview question for Groq</button>
+      </form>
+      <div id="chat-preview" class="hidden">
+        <h3>Exact chat payload preview</h3>
+        <p id="chat-preview-message" class="notice">This includes the sanitized question, recent sanitized chat history, system prompt, and scrubbed statement segment. It is not sent until you click the button below.</p>
+        <div id="chat-provider-payloads"></div>
+        <button id="send-chat" type="button">Send this preview to Groq</button>
+      </div>
+    </section>
+  </main>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
