@@ -3,5 +3,57 @@
 **Tool:** GitHub Copilot in the GitHub Copilot desktop app.  
 **Model:** Auto mode selected the underlying model; the exact model identifier is not exposed to this worker and is therefore not claimed.  
 **Promts:** 
+### Prompt 1: Planning and research
+```
+I'm building a Financial Data PII Scrubber for a take-home task. Requirements: a Python engine that processes every file (PDF, DOCX, CSV, TXT) in a folder, with no hardcoded filenames, and returns ONE combined scrubbed string with "---- File: <name> ----" headers. It removes IBANs, account numbers, card numbers (masked last-4 like xxxx1234 may stay), national IDs (CNIC, SSN, SIN, UK NI), emails, phones, payment handles (UPI, someone@easywallet), routing identifiers (sort code, SWIFT/BIC, IFSC), long numeric reference IDs, and home addresses. It must KEEP person names, merchant names (including URL-like ones such as Netflix.com), dates, amounts, balances, currencies and descriptions. All scrubbing must run locally. Only the scrubbed text may go to the Groq API. The stack is FastAPI, PostgreSQL, a simple frontend (Streamlit or vanilla HTML/JS) and a Groq analysis plus chat stage.
+
+Don't write code yet. Compare approaches (pure regex, Microsoft Presidio, spaCy NER, hybrid) and extraction libraries (pdfplumber, PyMuPDF, python-docx, csv/pandas), recommend one stack with reasons, note what you'd reject and why, and propose a project folder structure. Keep it concise because I must summarize this in a one-page NOTES.md.
+```
+
+### Prompt 2: File extraction and folder combiner
+```
+Using the structure we agreed on, write the extraction layer. It should have a function that takes a folder path, discovers all supported files dynamically (.pdf, .docx, .csv, .txt, case-insensitive), extracts text from each (preserving table rows for PDF/DOCX and handling odd CSV encodings and delimiters), and returns one string with "---- File: <name> ----" headers in sorted order. It should handle empty or corrupt files without crashing, log a warning, and leave a clear marker in the output. Don't paste real data. Also generate a small script that creates SYNTHETIC fake statements in all four formats, in the style of Pakistani, UK, US, Indian and European banks and wallets, containing fake IBANs, cards, CNIC/SSN/NI numbers, emails, phones, UPI IDs, sort codes, SWIFT, IFSC, trace IDs, addresses, and merchants like Foodpanda, Netflix.com and TESCO STORES, so I can test.
+```
+
+### Prompt 3: Scrubbing engine
+```
+Now write the scrubbing engine as a module with a function scrub_text(text) -> str. Use a layered local-only approach: (1) regex and checksum-validated detectors for IBAN (mod-97, all countries), credit cards (Luhn, keeping a masked last-4), CNIC, SSN, SIN, UK NI, emails, international phones, UPI/wallet handles, sort codes, SWIFT/BIC, IFSC, routing and transit numbers, long numeric reference IDs (e.g. 9+ digits) and addresses; (2) a protected-entity step so that merchant names (including URL-like ones such as Netflix.com), person names, dates, times, amounts, balances and currencies are never replaced; (3) deterministic ordering so that specific patterns run before generic ones. Use placeholders like <IBAN>, <PHONE>, <ACCOUNT_ID>, <EMAIL>, <CARD>, <NATIONAL_ID>, <PAYMENT_HANDLE>, <ROUTING_ID>, <REF_ID>, <ADDRESS>. Explain how you avoid false positives such as amounts and dates being caught as phone or ID numbers, and why emails are removed but domains like Netflix.com are kept.
+```
+
+### Prompt 4: Tests and hardening
+```
+Write a pytest suite for the scrubber using my synthetic data plus edge cases. Test recall (nothing in the PII list leaks) and precision (merchants, names, dates, amounts, balances and currencies survive intact) separately, and add a generalization test using formats from banks and countries not in my samples. Include tricky cases: amounts like 1,234,567.89 vs long IDs, dates like 2026-08-05 vs numbers, "Netflix.com" vs an email, IBANs with spaces, phones with +92/0092/(555) formats, and masked cards such as xxxx1234. Run the tests mentally, identify likely failures, and fix the engine. Give me a final precision/recall report format I can quote in NOTES.md.
+```
+
+### Prompt 5: PostgreSQL schema
+```
+Design the PostgreSQL persistence layer. Provide a docker-compose.yml for Postgres, a schema.sql, and SQLAlchemy models. Justify the schema for NOTES.md. I'm thinking of: scrub_runs (id, created_at, source_folder or upload batch, file_count), scrubbed_files (id, run_id, filename, file_type, scrubbed_text, char_count, redaction_counts JSONB), analyses (id, run_id, model, prompt_version, result JSONB, created_at), and chat_sessions/chat_messages (id, run_id, role, content, created_at). Add the indexes and foreign keys with ON DELETE CASCADE, and explain why I should NOT store raw text anywhere. Include a short psql query list I can show in my demo video.
+```
+
+### Prompt 6: FastAPI service
+```
+Build the FastAPI app using our scrubber and DB layer. Design RESTful endpoints and justify them: POST /runs (upload multiple files or point at a folder, scrub, store, return run_id plus the combined string), GET /runs, GET /runs/{id} (combined scrubbed string and per-file results), GET /runs/{id}/files, POST /runs/{id}/analysis, GET /runs/{id}/analysis, POST /runs/{id}/chat, GET /runs/{id}/chat, and GET /health. Use Pydantic schemas, dependency-injected DB sessions, config via .env (pydantic-settings), CORS for the frontend, file size/type validation, and proper HTTP error codes. Make sure raw uploads are processed in memory or in a temp directory that is deleted afterwards and are never persisted. Add a short API-design justification paragraph for NOTES.md.
+```
+
+### Prompt 7: Groq analysis stage
+```
+Implement the Groq analysis stage. (1) Recommend a Groq model with reasoning on capability, context window, speed, cost and free-tier limits, and make it configurable. (2) Write the system prompt for a budgeting-app analyst: output strict JSON (spending by category, top merchants, income vs expenses, recurring payments, notable insights, anomalies) and use ONLY the provided scrubbed data, never inventing transactions or amounts. Explain the reasoning behind its structure. (3) Hallucination handling: parse transactions locally and compute the real totals and category sums in Python, then validate every number in the LLM's JSON against them and flag or correct mismatches. Also handle context-window overflow by chunking. (4) Guardrails: JSON schema validation with retries, a final PII re-scan of the outbound text before it is sent to Groq (block the call if anything leaks), refusal handling and a temperature of 0. Then write tests for each guardrail and describe how I tested them for NOTES.md.
+```
+
+### Prompt 8: Chat feature
+```
+Implement the chat feature on top of the analysis. Design and document the conversation-history strategy: what goes into the context (system prompt, scrubbed data or a compact local transaction table, the analysis summary, the last N messages), how you trim or summarize older turns, and how you stay within Groq token limits. Ground the answers: for numeric questions like "how much did I spend on food?" or "which merchant did I pay most often?", compute the answer locally with pandas and give it to the LLM as a verified fact to phrase, instead of letting the model do the arithmetic. Refuse or redirect off-topic questions and questions asking for removed PII, and say "not in the data" when the data lacks the answer. Store the messages in Postgres and add tests for grounding and refusal.
+```
+
+### Prompt 9: Frontend
+```
+Build a simple frontend with Streamlit (no React/Vue/Angular) that drives the API end to end: upload files or choose the data folder, click Scrub, show the combined scrubbed output with the per-file headers and redaction counts, a run history sidebar, a button to run the Groq analysis showing categories, merchants and insights as tables/charts, and a chat panel with history for follow-up questions. Show clear error and loading states. It should call only the FastAPI endpoints, never the DB or Groq directly. Make the layout suitable for a demo video.
+```
+
+### Prompt 10: Docs and demo script
+```
+Finish the deliverables. Write: (1) README.md that lets someone run everything from scratch (install dependencies, .env with GROQ_API_KEY, docker compose for Postgres, apply schema, run the API and the frontend, run the scrubber CLI on a folder, run the tests) plus 3-5 sentences on approach and known limitations and a placeholder for the GitHub link; (2) NOTES.md, strictly one page and concise, covering research, approaches considered and rejected, final solution, API design and DB schema justification, the four LLM points (model choice, system prompt, hallucination/accuracy handling, guardrails and how they were tested) and future improvements; (3) a CLI script that outputs the combined scrubbed string for a folder to scrubbed_output.txt; (4) a step-by-step demo video script (scrub via FE, show output, show psql rows, show Groq analysis, 2-3 grounded chat questions, then explain approach, API/DB design, R&D and one improvement), with timestamps.
+```
+
 
 No external research assistant or other AI tools were used. The packaged source tests are local synthetic tests; the provided statement archive was parsed and scrubbed locally only.
